@@ -6,6 +6,7 @@ import           Benchmarking.VectorSum (createData)
 import qualified Benchmarking.VectorSum.CheckedStFromBack as CheckedStFromBack
 import qualified Benchmarking.VectorSum.CheckedStFromFront as CheckedStFromFront
 import qualified Benchmarking.VectorSum.FoldZip as FoldZip
+import qualified Benchmarking.VectorSum.FoldZipWith6 as FoldZipWith6
 import qualified Benchmarking.VectorSum.RecurseZip as RecurseZip
 import qualified Benchmarking.VectorSum.RecurseZipWithN as RecurseZipWithN
 import qualified Benchmarking.VectorSum.UncheckedStFromBack as UncheckedStFromBack
@@ -33,6 +34,7 @@ main = hspec $ do
 
     vsums :: VG.Vector v Double => [NonEmpty (v Double) -> v Double]
     vsums = [ FoldZip.vsum, RecurseZip.vsum, RecurseZipWithN.vsum
+            , FoldZipWith6.sum
             , UncheckedStFromBack.vsum, UncheckedStFromFront.vsum
             , UncheckedStFromBackBailEmpty.vsum, UncheckedStFromBackModify.vsum
             , CheckedStFromBack.vsum, CheckedStFromFront.vsum
