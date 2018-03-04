@@ -14,9 +14,9 @@ import qualified Data.Vector.Unboxed as VU
 -- in place. Uses unsafe operations, performs no bounds checks.
 -- Vectors are traversed from the front.
 vsum :: VG.Vector v Double => NonEmpty (v Double) -> v Double
-vsum (v :| vs) = ST.runST $ do
-  vec <- VG.thaw v
-  let vlen = VG.length v
+vsum (v0 :| vs) = ST.runST $ do
+  vec <- VG.thaw v0
+  let vlen = VG.length v0
   forM_ vs $ \v ->
     let go n | n == vlen = pure ()
         go n = do

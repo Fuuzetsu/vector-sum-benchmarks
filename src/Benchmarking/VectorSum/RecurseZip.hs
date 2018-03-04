@@ -2,7 +2,6 @@
 {-# LANGUAGE FlexibleContexts #-}
 module Benchmarking.VectorSum.RecurseZip (vsum) where
 
-import           Data.List (foldl')
 import           Data.List.NonEmpty
 import qualified Data.Vector as V
 import qualified Data.Vector.Generic as VG
