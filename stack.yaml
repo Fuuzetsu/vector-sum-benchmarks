@@ -1,0 +1,10 @@
+resolver: lts-10.5
+packages:
+- .
+
+extra-deps:
+  - weigh-0.0.7@rev:0
+
+nix:
+  shell-file: shell.nix
+  path: ["nixpkgs=./nixpkgs.nix"]
