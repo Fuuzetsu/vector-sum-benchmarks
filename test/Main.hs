@@ -9,8 +9,9 @@ import qualified Benchmarking.VectorSum.FoldZip as FoldZip
 import qualified Benchmarking.VectorSum.RecurseZip as RecurseZip
 import qualified Benchmarking.VectorSum.RecurseZipWithN as RecurseZipWithN
 import qualified Benchmarking.VectorSum.UncheckedStFromBack as UncheckedStFromBack
+import qualified Benchmarking.VectorSum.UncheckedStFromBackBailEmpty as UncheckedStFromBackBailEmpty
+import qualified Benchmarking.VectorSum.UncheckedStFromBackModify as UncheckedStFromBackModify
 import qualified Benchmarking.VectorSum.UncheckedStFromFront as UncheckedStFromFront
-import           Control.Monad (forM_)
 import           Data.List.NonEmpty
 import qualified Data.Vector as V
 import qualified Data.Vector.Generic as VG
@@ -33,6 +34,7 @@ main = hspec $ do
     vsums :: VG.Vector v Double => [NonEmpty (v Double) -> v Double]
     vsums = [ FoldZip.vsum, RecurseZip.vsum, RecurseZipWithN.vsum
             , UncheckedStFromBack.vsum, UncheckedStFromFront.vsum
+            , UncheckedStFromBackBailEmpty.vsum, UncheckedStFromBackModify.vsum
             , CheckedStFromBack.vsum, CheckedStFromFront.vsum
             ]
 

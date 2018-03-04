@@ -10,6 +10,8 @@ import qualified Benchmarking.VectorSum.FoldZip as FoldZip
 import qualified Benchmarking.VectorSum.RecurseZip as RecurseZip
 import qualified Benchmarking.VectorSum.RecurseZipWithN as RecurseZipWithN
 import qualified Benchmarking.VectorSum.UncheckedStFromBack as UncheckedStFromBack
+import qualified Benchmarking.VectorSum.UncheckedStFromBackBailEmpty as UncheckedStFromBackBailEmpty
+import qualified Benchmarking.VectorSum.UncheckedStFromBackModify as UncheckedStFromBackModify
 import qualified Benchmarking.VectorSum.UncheckedStFromFront as UncheckedStFromFront
 import           Control.DeepSeq (NFData)
 import           Data.List.NonEmpty
@@ -81,6 +83,10 @@ main = mainWith $ do
                       , vsumName = "RecurseZipWithN" }
       , VsumBenchmark { vsum = UncheckedStFromBack.vsum
                       , vsumName = "UncheckedStFromBack" }
+      , VsumBenchmark { vsum = UncheckedStFromBackModify.vsum
+                      , vsumName = "UncheckedStFromBackModify" }
+      , VsumBenchmark { vsum = UncheckedStFromBackBailEmpty.vsum
+                      , vsumName = "UncheckedStFromBackBailEmpty" }
       , VsumBenchmark { vsum = UncheckedStFromFront.vsum
                       , vsumName = "UncheckedStFromFront" }
       , VsumBenchmark { vsum = CheckedStFromBack.vsum
