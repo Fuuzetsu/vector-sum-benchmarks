@@ -1,0 +1,90 @@
+name:           vector-sum-benchmarks
+version:        0.1.0.0
+description:    Please see the README on Github at <https://github.com/Fuuzetsu/vector-sum-benchmarks#readme>
+homepage:       https://github.com/Fuuzetsu/vector-sum-benchmarks#readme
+bug-reports:    https://github.com/Fuuzetsu/vector-sum-benchmarks/issues
+author:         Mateusz Kowalczyk
+maintainer:     fuuzetsu@fuuzetsu.co.uk
+copyright:      2018, Mateusz Kowalczyk
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+
+extra-source-files:
+    ChangeLog.md
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/Fuuzetsu/vector-sum-benchmarks
+
+library
+  exposed-modules:
+      Benchmarking.VectorSum
+      Benchmarking.VectorSum.CheckedStFromBack
+      Benchmarking.VectorSum.CheckedStFromFront
+      Benchmarking.VectorSum.FoldZip
+      Benchmarking.VectorSum.FoldZipWith6
+      Benchmarking.VectorSum.RecurseZip
+      Benchmarking.VectorSum.RecurseZipWithN
+      Benchmarking.VectorSum.UncheckedStFromBack
+      Benchmarking.VectorSum.UncheckedStFromBackBailEmpty
+      Benchmarking.VectorSum.UncheckedStFromBackModify
+      Benchmarking.VectorSum.UncheckedStFromFront
+  other-modules:
+      Paths_vector_sum_benchmarks
+  hs-source-dirs:
+      src
+  ghc-options: -O2
+  build-depends:
+      base >=4.7 && <5
+    , vector
+  default-language: Haskell2010
+
+test-suite vector-sum-benchmarks-test
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  other-modules:
+      Paths_vector_sum_benchmarks
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -O2
+  build-depends:
+      base >=4.7 && <5
+    , hspec
+    , vector
+    , vector-sum-benchmarks
+  default-language: Haskell2010
+
+benchmark vector-sum-benchmarks-bench
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  other-modules:
+      Paths_vector_sum_benchmarks
+  hs-source-dirs:
+      bench
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -O2
+  build-depends:
+      base >=4.7 && <5
+    , criterion
+    , deepseq
+    , vector
+    , vector-sum-benchmarks
+  default-language: Haskell2010
+
+benchmark vector-sum-benchmarks-alloc
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  other-modules:
+      Paths_vector_sum_benchmarks
+  hs-source-dirs:
+      alloc
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -O2
+  build-depends:
+      base >=4.7 && <5
+    , deepseq
+    , vector
+    , vector-sum-benchmarks
+    , weigh
+  default-language: Haskell2010
